@@ -11,7 +11,7 @@
   </div>
 
   <!-- Search -->
-  <div class="flex gap-3 w-full max-w-md mb-12">
+  <div class="flex gap-3 w-full max-w-md md:max-w-2xl mb-12">
     <input
       type="text"
       placeholder="Ange stad..."
@@ -39,7 +39,7 @@
 
   <!-- Error -->
   @if (error()) {
-    <div class="px-6 py-4 rounded-xl max-w-md text-center" style="background: #1a0a04; border: 1px solid #5c2a10; color: #c97a4c;">
+    <div class="px-6 py-4 rounded-xl w-full max-w-md md:max-w-2xl text-center" style="background: #1a0a04; border: 1px solid #5c2a10; color: #c97a4c;">
       {{ error() }}
     </div>
   }
@@ -47,7 +47,7 @@
   <!-- Result -->
   @if (weather(); as w) {
     @if (beer(); as b) {
-      <div class="w-full max-w-md space-y-4">
+      <div class="w-full max-w-md md:max-w-2xl space-y-4">
 
         <!-- Weather info -->
         <div class="rounded-xl p-6" style="background: #130900; border: 1px solid #3d2b10;">
@@ -75,11 +75,11 @@
           </div>
         </div>
 
-        <!-- Beer recommendation -->
-        <div class="rounded-xl overflow-hidden" style="border: 1px solid #3d2b10;">
+        <!-- Beer recommendation – mobil: staplas, desktop: sida vid sida -->
+        <div class="rounded-xl overflow-hidden flex flex-col md:flex-row" style="border: 1px solid #3d2b10;">
 
           <!-- Beer image -->
-          <div class="relative" style="background: #1a0f04; aspect-ratio: 3/4; overflow: hidden;">
+          <div class="relative flex-shrink-0 md:w-2/5" style="background: #1a0f04; aspect-ratio: 3/4;">
             <img
               [src]="b.image"
               [alt]="b.name"
@@ -92,35 +92,39 @@
           </div>
 
           <!-- Beer info -->
-          <div class="p-7" style="background: #130900;">
-            <p class="text-xs uppercase tracking-widest mb-1" style="color: #6b4f2a; font-family: 'Lora', serif; letter-spacing: 0.2em;">
-              {{ b.style }}
-            </p>
-            <h3 class="text-3xl font-bold mb-4" style="font-family: 'Playfair Display', serif; color: #c9a84c;">
-              {{ b.name }}
-            </h3>
-            <p class="leading-relaxed mb-6" style="color: #a07840; font-family: 'Lora', serif;">
-              {{ b.comment }}
-            </p>
-
-            <!-- Swedish brands -->
-            <div class="pb-5 mb-5" style="border-bottom: 1px solid #3d2b10;">
-              <p class="text-xs uppercase tracking-widest mb-2" style="color: #6b4f2a; font-family: 'Lora', serif; letter-spacing: 0.2em;">
-                Svenska favoriter
+          <div class="p-7 flex flex-col justify-between md:w-3/5 md:overflow-y-auto" style="background: #130900;">
+            <div>
+              <p class="text-xs uppercase tracking-widest mb-1" style="color: #6b4f2a; font-family: 'Lora', serif; letter-spacing: 0.2em;">
+                {{ b.style }}
               </p>
-              <p class="text-sm" style="color: #8a6030; font-family: 'Lora', serif;">
-                {{ b.swedishBrands }}
+              <h3 class="text-3xl font-bold mb-4" style="font-family: 'Playfair Display', serif; color: #c9a84c;">
+                {{ b.name }}
+              </h3>
+              <p class="leading-relaxed mb-6" style="color: #a07840; font-family: 'Lora', serif;">
+                {{ b.comment }}
               </p>
             </div>
 
-            <!-- International brands -->
             <div>
-              <p class="text-xs uppercase tracking-widest mb-2" style="color: #6b4f2a; font-family: 'Lora', serif; letter-spacing: 0.2em;">
-                Internationellt
-              </p>
-              <p class="text-sm" style="color: #8a6030; font-family: 'Lora', serif;">
-                {{ b.brands }}
-              </p>
+              <!-- Swedish brands -->
+              <div class="pb-5 mb-5" style="border-bottom: 1px solid #3d2b10;">
+                <p class="text-xs uppercase tracking-widest mb-2" style="color: #6b4f2a; font-family: 'Lora', serif; letter-spacing: 0.2em;">
+                  Svenska favoriter
+                </p>
+                <p class="text-sm" style="color: #8a6030; font-family: 'Lora', serif;">
+                  {{ b.swedishBrands }}
+                </p>
+              </div>
+
+              <!-- International brands -->
+              <div>
+                <p class="text-xs uppercase tracking-widest mb-2" style="color: #6b4f2a; font-family: 'Lora', serif; letter-spacing: 0.2em;">
+                  Internationellt
+                </p>
+                <p class="text-sm" style="color: #8a6030; font-family: 'Lora', serif;">
+                  {{ b.brands }}
+                </p>
+              </div>
             </div>
 
           </div>
