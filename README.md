@@ -84,7 +84,7 @@ src/
 
 ## Deploy
 
-Appen ar klar for Vercel. Saett miljovariabeln `WEATHER_API_KEY` i Vercel-projektet sa genereras `environment.ts` automatiskt vid bygget.
+Saett miljovariabeln `WEATHER_API_KEY` i Vercel-projektet sa genereras `environment.ts` automatiskt vid bygget.
 
 ---
 
