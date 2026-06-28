@@ -1,3 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+* {
+  font-family: 'Lora', Georgia, serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
